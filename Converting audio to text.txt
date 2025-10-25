@@ -1,6 +1,0 @@
-Post: https://api.groq.com/openai/v1/audio/transcriptions
-
-Body: form-data
-
-file  file WhatsApp Ptt 2025-10-14 at 12.56.47 PM
-model text whisper-large-v3
