@@ -1,0 +1,46 @@
+Post: https://api.groq.com/openai/v1/chat/completions
+
+Body : raw
+
+{
+"model": "llama-3.3-70b-versatile",
+"messages": [{
+    "role": "user",a
+    "content": "Instructions (user prompt)- Generate ONLY a Selenium Java Code for billing.allevasoft.com application. Use TestNG as the test runner. Add Javadoc for methods & class.Use Selenium 2.30+ compatible imports. Use meaningful method names. [DO NOT] include explanations or test code.Follow Locator Strategies. Use ID only when it is unique and do not have numbers in it. Use NAME only ID is not present and when it is unique. Use XPath (preferably attribute based or text based). [NEVER] use css. Use Explicit wait No (No thread.sleep). Context/Background (System Prompt). What role are you expecting this AI assistant? Background / Domain / High level expectations. You are an AI assistant to convert HTML DOM structure to selenium code. You are an expert in Salesforce and Selenium / Java. The project is Banking for Europe retail customer"
+}]
+}
+
+output:
+
+{
+    "id": "chatcmpl-f957d925-f178-4abe-b89b-a732e1d042bf",
+    "object": "chat.completion",
+    "created": 1760518120,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "```java\n/**\n * Class to automate billing.allevasoft.com application using Selenium Java.\n * \n * @author [Your Name]\n */\npublic class BillingAppAutomation {\n\n    /**\n     * WebDriver instance to interact with the application.\n     */\n    private WebDriver driver;\n\n    /**\n     * Constructor to initialize the WebDriver instance.\n     */\n    public BillingAppAutomation() {\n        // Initialize the WebDriver instance\n        this.driver = new ChromeDriver();\n    }\n\n    /**\n     * Method to launch the billing application.\n     */\n    public void launchApplication() {\n        // Launch the application\n        driver.get(\"https://billing.allevasoft.com/\");\n    }\n\n    /**\n     * Method to login to the application.\n     * \n     * @param username the username to login\n     * @param password the password to login\n     */\n    public void loginToApplication(String username, String password) {\n        // Enter the username\n        driver.findElement(By.name(\"username\")).sendKeys(username);\n\n        // Enter the password\n        driver.findElement(By.name(\"password\")).sendKeys(password);\n\n        // Click on the login button\n        driver.findElement(By.xpath(\"//button[@type='submit']\")).click();\n    }\n\n    /**\n     * Method to navigate to the billing dashboard.\n     */\n    public void navigateToBillingDashboard() {\n        // Click on the billing dashboard link\n        driver.findElement(By.xpath(\"//a[text()='Billing Dashboard']\")).click();\n    }\n\n    /**\n     * Method to view the billing details.\n     */\n    public void viewBillingDetails() {\n        // Click on the view billing details link\n        driver.findElement(By.xpath(\"//a[text()='View Billing Details']\")).click();\n    }\n\n    /**\n     * Method to pay the bill.\n     */\n    public void payBill() {\n        // Click on the pay bill button\n        driver.findElement(By.xpath(\"//button[text()='Pay Bill']\")).click();\n    }\n\n    /**\n     * Method to logout from the application.\n     */\n    public void logoutFromApplication() {\n        // Click on the logout link\n        driver.findElement(By.xpath(\"//a[text()='Logout']\")).click();\n    }\n\n    /**\n     * Method to close the browser.\n     */\n    public void closeBrowser() {\n        // Close the browser\n        driver.quit();\n    }\n}\n```"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.041150851,
+        "prompt_tokens": 211,
+        "prompt_time": 0.019099189,
+        "completion_tokens": 462,
+        "completion_time": 0.800398379,
+        "total_tokens": 673,
+        "total_time": 0.819497568
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_34d416ee39",
+    "x_groq": {
+        "id": "req_01k7kgx8e0fjgsj8de113jcnd6"
+    },
+    "service_tier": "on_demand"
+}

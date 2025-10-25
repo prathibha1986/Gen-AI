@@ -1,0 +1,51 @@
+Post: https://api.groq.com/openai/v1/chat/completions
+
+Body: raw
+
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Instructions:Generate test data for a banking application. The application primarily handles various types of credit cards (e.g., Visa, MasterCard, Amex, Discover).Include test data for positive scenarios (valid transactions).Include test data for negative scenarios (invalid card numbers, expired cards, incorrect CVV, missing details).Include test data for edge cases (maximum-length names, special characters, unusual expiry dates, boundary CVV values).Provide the data in JSON file format suitable for automated testing.Context:You are generating test data for a European retail banking application. The system allows users to make payments, manage accounts, and validate credit card details. The test data will be used for automated testing of credit card validations..Example:positiveCases: testCaseId: POS-001,cardType: Visa,  cardNumber: 4111111111111111,cardHolderName: John Doe,expiryDate: 12/28,cvv: 123,   expectedResult: Transaction Approved. Persona:You are an AI assistant specialized in credit card systems and banking applications. You understand rules for card validation, European regulations, and edge scenarios for financial systems. Your goal is to generate accurate, realistic, and comprehensive test data.Output format:Output must be a JSON array of test cases.Each test case must have:testCaseId (unique ID),cardType (Visa, MasterCard, Amex, Discover),cardNumber (fake but realistic, valid Luhn number),cardHolderName,expiryDate (MM/YY format)cvv,.Tone:Professional, precise, and structured. Focus on clarity and correctness for automated testing purposes. No unnecessary explanations."
+    }
+  ],
+  "model": "llama-3.3-70b-versatile",
+  "max_tokens": 500,
+  "top_p": 0.99
+  }
+
+
+Output:
+
+{
+    "id": "chatcmpl-144f5b4f-5c26-4b29-9f5b-69c6b4fb5395",
+    "object": "chat.completion",
+    "created": 1760518224,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "```json\n[\n  {\n    \"testCaseId\": \"POS-001\",\n    \"cardType\": \"Visa\",\n    \"cardNumber\": \"4111111111111111\",\n    \"cardHolderName\": \"John Doe\",\n    \"expiryDate\": \"12/28\",\n    \"cvv\": \"123\",\n    \"expectedResult\": \"Transaction Approved\"\n  },\n  {\n    \"testCaseId\": \"POS-002\",\n    \"cardType\": \"MasterCard\",\n    \"cardNumber\": \"5105105105105100\",\n    \"cardHolderName\": \"Jane Smith\",\n    \"expiryDate\": \"06/29\",\n    \"cvv\": \"456\",\n    \"expectedResult\": \"Transaction Approved\"\n  },\n  {\n    \"testCaseId\": \"POS-003\",\n    \"cardType\": \"Amex\",\n    \"cardNumber\": \"371449635398431\",\n    \"cardHolderName\": \"Emily Johnson\",\n    \"expiryDate\": \"08/32\",\n    \"cvv\": \"789\",\n    \"expectedResult\": \"Transaction Approved\"\n  },\n  {\n    \"testCaseId\": \"POS-004\",\n    \"cardType\": \"Discover\",\n    \"cardNumber\": \"6011111111111117\",\n    \"cardHolderName\": \"Michael Brown\",\n    \"expiryDate\": \"02/30\",\n    \"cvv\": \"901\",\n    \"expectedResult\": \"Transaction Approved\"\n  },\n  {\n    \"testCaseId\": \"NEG-001\",\n    \"cardType\": \"Visa\",\n    \"cardNumber\": \"4111111111111112\",\n    \"cardHolderName\": \"John Doe\",\n    \"expiryDate\": \"12/28\",\n    \"cvv\": \"123\",\n    \"expectedResult\": \"Invalid Card Number\"\n  },\n  {\n    \"testCaseId\": \"NEG-002\",\n    \"cardType\": \"MasterCard\",\n    \"cardNumber\": \"5105105105105100\",\n    \"cardHolderName\": \"Jane Smith\",\n    \"expiryDate\": \"06/20\",\n    \"cvv\": \"456\",\n    \"expectedResult\": \"Card Expired\"\n  },\n  {\n    \"testCaseId\": \"NEG-003\",\n    \"cardType\": \"Amex\",\n    \"cardNumber\": \"371449635398431\",\n    \"cardHolderName\": \"Emily Johnson\",\n    \"expiryDate\": \"08/32\",\n    \"cvv\":"
+            },
+            "logprobs": null,
+            "finish_reason": "length"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.049079017,
+        "prompt_tokens": 369,
+        "prompt_time": 0.042464545,
+        "completion_tokens": 500,
+        "completion_time": 0.784819514,
+        "total_tokens": 869,
+        "total_time": 0.827284059
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_34d416ee39",
+    "x_groq": {
+        "id": "req_01k7kh0dzjf6ds2f5vnjkxbk2r"
+    },
+    "service_tier": "on_demand"
+}
